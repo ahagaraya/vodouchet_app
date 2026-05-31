@@ -1,0 +1,2429 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "full_name": "Андрей Админ",
+      "email": "admin@vodouchet.ru",
+      "login": "admin",
+      "password_hash": "$2a$10$MsEuZFkjLL2N0UcRgIzLJeohDNLTh61cuIL/DyNL0MLYNw95Ws74q",
+      "role": "admin",
+      "position": "Руководитель",
+      "verified": 1,
+      "verification_code": null,
+      "address": "",
+      "deleted": false,
+      "reset_password_code": null,
+      "reset_password_expires": null
+    },
+    {
+      "id": 2,
+      "full_name": "Игорь Монтажник",
+      "email": "igor@vodouchet.ru",
+      "login": "igor_m",
+      "password_hash": "$2a$10$MsEuZFkjLL2N0UcRgIzLJeohDNLTh61cuIL/DyNL0MLYNw95Ws74q",
+      "role": "employee",
+      "position": "Монтажник",
+      "verified": 1,
+      "verification_code": null,
+      "address": "",
+      "deleted": false,
+      "reset_password_code": null,
+      "reset_password_expires": null
+    },
+    {
+      "id": 3,
+      "full_name": "Сергей Поверитель",
+      "email": "sergey@vodouchet.ru",
+      "login": "sergey_p",
+      "password_hash": "$2a$10$MsEuZFkjLL2N0UcRgIzLJeohDNLTh61cuIL/DyNL0MLYNw95Ws74q",
+      "role": "employee",
+      "position": "Поверитель",
+      "verified": 1,
+      "verification_code": null,
+      "address": "",
+      "deleted": false,
+      "reset_password_code": null,
+      "reset_password_expires": null
+    },
+    {
+      "id": 4,
+      "full_name": "Ольга Оператор",
+      "email": "olga@vodouchet.ru",
+      "login": "olga_o",
+      "password_hash": "$2a$10$MsEuZFkjLL2N0UcRgIzLJeohDNLTh61cuIL/DyNL0MLYNw95Ws74q",
+      "role": "employee",
+      "position": "Оператор",
+      "verified": 1,
+      "verification_code": null,
+      "address": "",
+      "deleted": false,
+      "reset_password_code": null,
+      "reset_password_expires": null
+    },
+    {
+      "id": 5,
+      "full_name": "Мария Логист",
+      "email": "maria@vodouchet.ru",
+      "login": "maria_l",
+      "password_hash": "$2a$10$MsEuZFkjLL2N0UcRgIzLJeohDNLTh61cuIL/DyNL0MLYNw95Ws74q",
+      "role": "employee",
+      "position": "Логист",
+      "verified": 1,
+      "verification_code": null,
+      "address": "",
+      "deleted": false,
+      "reset_password_code": null,
+      "reset_password_expires": null
+    },
+    {
+      "id": 6,
+      "full_name": "Анна Клиентова",
+      "email": "anna@vodouchet.ru",
+      "login": "anna_k",
+      "password_hash": "$2a$10$00tsE85A7HyGgCsopGrKaO6qu0PazcFqSIZmzByunRRVH6TTxOnAW",
+      "role": "client",
+      "position": "Клиент",
+      "verified": 1,
+      "verification_code": null,
+      "phone": "+7 (900) 222-33-44",
+      "address": "ул. Новая 5",
+      "deleted": false,
+      "reset_password_code": "552970",
+      "reset_password_expires": "2026-05-31T00:13:31.518Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Счетчики"
+    },
+    {
+      "id": 2,
+      "name": "Монтаж"
+    },
+    {
+      "id": 3,
+      "name": "Поверка"
+    }
+  ],
+  "catalogItems": [
+    {
+      "id": 1,
+      "title": "Счетчик воды ITELMA",
+      "description": "Импульсный, универсальный",
+      "price": 2100,
+      "image_url": "/static/catalog/item1.png",
+      "category_id": 1
+    },
+    {
+      "id": 2,
+      "title": "Счетчик воды VALTEC",
+      "description": "Антимагнитный, сухоходный",
+      "price": 2450,
+      "image_url": "/static/catalog/item2.png",
+      "category_id": 1
+    },
+    {
+      "id": 3,
+      "title": "Счетчик горячей воды ЭКО",
+      "description": "Для ГВС до 90°C",
+      "price": 2300,
+      "image_url": "/static/catalog/item3.png",
+      "category_id": 1
+    },
+    {
+      "id": 4,
+      "title": "Установка 1 счетчика",
+      "description": "Монтаж с подключением",
+      "price": 1800,
+      "image_url": "/static/catalog/item4.png",
+      "category_id": 2
+    },
+    {
+      "id": 5,
+      "title": "Установка 2 счетчиков",
+      "description": "Монтаж комплекта ХВС+ГВС",
+      "price": 3200,
+      "image_url": "/static/catalog/item5.png",
+      "category_id": 2
+    },
+    {
+      "id": 6,
+      "title": "Замена узла учета",
+      "description": "Демонтаж старого/монтаж нового",
+      "price": 3500,
+      "image_url": "/static/catalog/item6.png",
+      "category_id": 2
+    },
+    {
+      "id": 7,
+      "title": "Поверка без снятия",
+      "description": "Поверка на месте",
+      "price": 1100,
+      "image_url": "/static/catalog/item7.png",
+      "category_id": 3
+    },
+    {
+      "id": 8,
+      "title": "Поверка со снятием",
+      "description": "Лабораторная поверка",
+      "price": 1600,
+      "image_url": "/static/catalog/item8.png",
+      "category_id": 3
+    },
+    {
+      "id": 9,
+      "title": "Оформление документов",
+      "description": "Акт, договор, паспорт",
+      "price": 700,
+      "image_url": "/static/catalog/item9.png",
+      "category_id": 3
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "user_id": 6,
+      "order_id": 3,
+      "employee_id": 2,
+      "rating": 5,
+      "comment": "Игорь всё сделал быстро и аккуратно!",
+      "created_at": "2026-05-03T10:00:00.000Z",
+      "admin_reply": null
+    },
+    {
+      "id": 2,
+      "user_id": 6,
+      "order_id": 9,
+      "employee_id": 2,
+      "rating": 5,
+      "comment": "супер",
+      "created_at": "2026-05-30T01:28:15.759Z",
+      "admin_reply": null
+    },
+    {
+      "id": 3,
+      "user_id": 6,
+      "order_id": 10,
+      "employee_id": 2,
+      "rating": 5,
+      "comment": "хорошо",
+      "created_at": "2026-05-30T21:31:13.578Z",
+      "admin_reply": null
+    },
+    {
+      "id": 4,
+      "user_id": 6,
+      "order_id": 15,
+      "employee_id": 2,
+      "rating": 5,
+      "comment": "Муся",
+      "created_at": "2026-05-31T00:53:49.748Z",
+      "admin_reply": null
+    },
+    {
+      "id": 5,
+      "user_id": 6,
+      "order_id": 16,
+      "employee_id": 2,
+      "rating": 5,
+      "comment": "анана",
+      "created_at": "2026-05-31T10:27:15.781Z",
+      "admin_reply": null
+    },
+    {
+      "id": 6,
+      "user_id": 6,
+      "order_id": 17,
+      "employee_id": 2,
+      "rating": 5,
+      "comment": "вау",
+      "created_at": "2026-05-31T10:55:01.983Z",
+      "admin_reply": {
+        "text": "спасибо)",
+        "replied_at": "2026-05-31T10:57:14.983Z",
+        "admin_user_id": 1
+      }
+    }
+  ],
+  "supportMessages": [],
+  "incomingRequests": [
+    {
+      "id": 1,
+      "source": "website",
+      "client_name": "Петров И.С.",
+      "client_phone": "+7 (900) 111-22-33",
+      "address": "ул. Ленина, 12, кв. 45",
+      "description": "Установка счетчиков ХВС и ГВС",
+      "status": "confirmed",
+      "admin_notes": "Согласовать время после 18:00",
+      "created_at": "2026-05-01T10:00:00.000Z",
+      "client_user_id": null,
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": null,
+      "order_id": 11,
+      "preferred_specialist_id": null,
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "catalog_items": []
+    },
+    {
+      "id": 2,
+      "source": "telegram",
+      "client_name": "Сидорова А.В.",
+      "client_phone": "+7 (900) 444-55-66",
+      "address": "пр. Мира, 8",
+      "description": "Поверка счетчика без снятия",
+      "status": "confirmed",
+      "admin_notes": "",
+      "created_at": "2026-05-05T09:30:00.000Z",
+      "client_user_id": null,
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": null,
+      "order_id": 6,
+      "preferred_specialist_id": null,
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "catalog_items": []
+    },
+    {
+      "id": 3,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "попная",
+      "description": "помыть кота",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": null,
+      "status": "rejected",
+      "admin_notes": "",
+      "created_at": "2026-05-30T01:07:26.963Z",
+      "order_id": 7,
+      "preferred_specialist_id": null,
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "catalog_items": []
+    },
+    {
+      "id": 4,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "падал",
+      "description": "Пуся",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": null,
+      "status": "confirmed",
+      "admin_notes": "",
+      "created_at": "2026-05-30T01:21:47.451Z",
+      "order_id": 9,
+      "preferred_specialist_id": null,
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "catalog_items": []
+    },
+    {
+      "id": 5,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "пппп",
+      "description": "казашка",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": null,
+      "status": "confirmed",
+      "admin_notes": "",
+      "created_at": "2026-05-30T21:27:40.563Z",
+      "order_id": 10,
+      "preferred_specialist_id": null,
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "catalog_items": []
+    },
+    {
+      "id": 6,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "ллл",
+      "description": "ааа",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": null,
+      "status": "rejected",
+      "admin_notes": "",
+      "created_at": "2026-05-30T21:49:04.276Z",
+      "order_id": null,
+      "preferred_specialist_id": null,
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "catalog_items": []
+    },
+    {
+      "id": 7,
+      "source": "website",
+      "client_user_id": null,
+      "client_name": "Test",
+      "client_phone": "+7900",
+      "address": "ул. Test 1",
+      "description": "test work",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": 1800,
+      "catalog_items": [
+        {
+          "catalog_item_id": 4,
+          "title": "Установка 1 счетчика",
+          "price": 1800,
+          "quantity": 1,
+          "subtotal": 1800
+        }
+      ],
+      "preferred_specialist_id": null,
+      "status": "new",
+      "admin_notes": "",
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "created_at": "2026-05-30T23:43:24.437Z",
+      "order_id": null
+    },
+    {
+      "id": 8,
+      "source": "website",
+      "client_user_id": null,
+      "client_name": "Тест Сайт",
+      "client_phone": "+79001112233",
+      "address": "ул. Тест, 1",
+      "description": "Поверка",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": null,
+      "catalog_items": [],
+      "preferred_specialist_id": null,
+      "status": "new",
+      "admin_notes": "",
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "created_at": "2026-05-30T23:47:04.648Z",
+      "order_id": null
+    },
+    {
+      "id": 9,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "пожалуйста",
+      "description": "помогите",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "estimated_cost": 15350,
+      "catalog_items": [
+        {
+          "catalog_item_id": 1,
+          "title": "Счетчик воды ITELMA",
+          "price": 2100,
+          "quantity": 1,
+          "subtotal": 2100
+        },
+        {
+          "catalog_item_id": 2,
+          "title": "Счетчик воды VALTEC",
+          "price": 2450,
+          "quantity": 1,
+          "subtotal": 2450
+        },
+        {
+          "catalog_item_id": 3,
+          "title": "Счетчик горячей воды ЭКО",
+          "price": 2300,
+          "quantity": 1,
+          "subtotal": 2300
+        },
+        {
+          "catalog_item_id": 9,
+          "title": "Оформление документов",
+          "price": 700,
+          "quantity": 1,
+          "subtotal": 700
+        },
+        {
+          "catalog_item_id": 5,
+          "title": "Установка 2 счетчиков",
+          "price": 3200,
+          "quantity": 1,
+          "subtotal": 3200
+        },
+        {
+          "catalog_item_id": 6,
+          "title": "Замена узла учета",
+          "price": 3500,
+          "quantity": 1,
+          "subtotal": 3500
+        },
+        {
+          "catalog_item_id": 7,
+          "title": "Поверка без снятия",
+          "price": 1100,
+          "quantity": 1,
+          "subtotal": 1100
+        }
+      ],
+      "preferred_specialist_id": null,
+      "status": "confirmed",
+      "admin_notes": "",
+      "proposal_cost": 15350,
+      "proposal_comment": "вы ошиблись",
+      "proposal_status": "accepted",
+      "reschedule_request": null,
+      "created_at": "2026-05-30T23:49:13.990Z",
+      "order_id": 12
+    },
+    {
+      "id": 10,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "ааа",
+      "description": "ббб",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": 6850,
+      "catalog_items": [
+        {
+          "catalog_item_id": 1,
+          "title": "Счетчик воды ITELMA",
+          "price": 2100,
+          "quantity": 1,
+          "subtotal": 2100
+        },
+        {
+          "catalog_item_id": 2,
+          "title": "Счетчик воды VALTEC",
+          "price": 2450,
+          "quantity": 1,
+          "subtotal": 2450
+        },
+        {
+          "catalog_item_id": 3,
+          "title": "Счетчик горячей воды ЭКО",
+          "price": 2300,
+          "quantity": 1,
+          "subtotal": 2300
+        }
+      ],
+      "preferred_specialist_id": null,
+      "status": "confirmed",
+      "admin_notes": "",
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "created_at": "2026-05-31T00:27:51.232Z",
+      "order_id": 13
+    },
+    {
+      "id": 11,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "dssasdc",
+      "description": "Asda",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": 4550,
+      "catalog_items": [
+        {
+          "catalog_item_id": 1,
+          "title": "Счетчик воды ITELMA",
+          "price": 2100,
+          "quantity": 1,
+          "subtotal": 2100
+        },
+        {
+          "catalog_item_id": 2,
+          "title": "Счетчик воды VALTEC",
+          "price": 2450,
+          "quantity": 1,
+          "subtotal": 2450
+        }
+      ],
+      "preferred_specialist_id": null,
+      "status": "confirmed",
+      "admin_notes": "",
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "created_at": "2026-05-31T00:32:05.324Z",
+      "order_id": 14
+    },
+    {
+      "id": 12,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "ул. Новая 5",
+      "description": "ппп",
+      "visit_date": "",
+      "visit_time": "",
+      "estimated_cost": 1600,
+      "catalog_items": [
+        {
+          "catalog_item_id": 8,
+          "title": "Поверка со снятием",
+          "price": 1600,
+          "quantity": 1,
+          "subtotal": 1600
+        }
+      ],
+      "preferred_specialist_id": null,
+      "status": "confirmed",
+      "admin_notes": "",
+      "proposal_cost": null,
+      "proposal_comment": null,
+      "proposal_status": null,
+      "reschedule_request": null,
+      "created_at": "2026-05-31T01:22:05.262Z",
+      "order_id": 16
+    },
+    {
+      "id": 13,
+      "source": "app",
+      "client_user_id": 6,
+      "client_name": "Анна Клиентова",
+      "client_phone": "+7 (900) 222-33-44",
+      "address": "jhjh",
+      "description": "kjkj",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "estimated_cost": 6700,
+      "catalog_items": [
+        {
+          "catalog_item_id": 5,
+          "title": "Установка 2 счетчиков",
+          "price": 3200,
+          "quantity": 1,
+          "subtotal": 3200
+        },
+        {
+          "catalog_item_id": 6,
+          "title": "Замена узла учета",
+          "price": 3500,
+          "quantity": 1,
+          "subtotal": 3500
+        }
+      ],
+      "preferred_specialist_id": 2,
+      "status": "confirmed",
+      "admin_notes": "",
+      "proposal_cost": 6700,
+      "proposal_comment": "вы ошиблись",
+      "proposal_status": "accepted",
+      "reschedule_request": null,
+      "created_at": "2026-05-31T10:47:11.951Z",
+      "order_id": 17
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "request_id": null,
+      "assigned_user_id": 2,
+      "address": "ул. Гагарина, 5, кв. 12",
+      "works": [
+        {
+          "id": 1,
+          "title": "test",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 3200,
+      "contact_name": "Кузнецов В.П.",
+      "contact_phone": "+7 (900) 777-11-22",
+      "client_comments": "Домофон не работает, звонить заранее",
+      "visit_date": "2026-05-06",
+      "visit_time": "14:00",
+      "status": "in_progress",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-04T12:00:00.000Z",
+      "updated_at": "2026-05-30T00:38:11.735Z",
+      "client_user_id": null,
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "in_progress",
+          "at": "2026-05-04T12:00:00.000Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "request_id": null,
+      "assigned_user_id": 3,
+      "address": "ул. Садовая, 22",
+      "works": [
+        {
+          "id": 1,
+          "title": "Поверка счетчика на месте",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "title": "Выдача документов клиенту",
+          "completed": false
+        }
+      ],
+      "estimated_cost": 1100,
+      "contact_name": "Николаева Е.А.",
+      "contact_phone": "+7 (900) 333-44-55",
+      "client_comments": "Счетчик в подвале, ключ у concierge",
+      "visit_date": "2026-05-06",
+      "visit_time": "10:30",
+      "status": "published",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-03T08:00:00.000Z",
+      "updated_at": "2026-05-03T08:00:00.000Z",
+      "client_user_id": null,
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-03T08:00:00.000Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "request_id": null,
+      "assigned_user_id": 2,
+      "address": "ул. Пушкина, 3",
+      "works": [
+        {
+          "id": 1,
+          "title": "Замена узла учета",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 3500,
+      "contact_name": "Орлов Д.М.",
+      "contact_phone": "+7 (900) 555-66-77",
+      "client_comments": "",
+      "visit_date": "2026-05-02",
+      "visit_time": "16:00",
+      "status": "completed",
+      "payment_status": "paid",
+      "payment_note": "Оплата картой на месте",
+      "service_note": "Клиент просил повторный выезд через год",
+      "created_at": "2026-05-01T14:00:00.000Z",
+      "updated_at": "2026-05-02T17:30:00.000Z",
+      "client_user_id": 6,
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "completed",
+          "at": "2026-05-01T14:00:00.000Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "request_id": null,
+      "assigned_user_id": 2,
+      "address": "test",
+      "works": [
+        {
+          "id": 1,
+          "title": "a",
+          "completed": false
+        }
+      ],
+      "estimated_cost": 100,
+      "contact_name": "",
+      "contact_phone": "",
+      "client_comments": "",
+      "visit_date": "",
+      "visit_time": "",
+      "status": "published",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-30T00:21:58.410Z",
+      "updated_at": "2026-05-30T00:32:01.137Z",
+      "client_user_id": null,
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-30T00:21:58.410Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "request_id": null,
+      "assigned_user_id": 2,
+      "address": "пр. Мира, 8",
+      "works": [
+        {
+          "id": 1,
+          "title": "Установка счетчика",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 1800,
+      "contact_name": "Test",
+      "contact_phone": "",
+      "client_comments": "",
+      "visit_date": "",
+      "visit_time": "",
+      "status": "completed",
+      "payment_status": "paid",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-30T00:45:46.424Z",
+      "updated_at": "2026-05-30T00:51:42.478Z",
+      "client_user_id": null,
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "completed",
+          "at": "2026-05-30T00:45:46.424Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "request_id": 2,
+      "assigned_user_id": 2,
+      "address": "пр. Мира, 8",
+      "works": [
+        {
+          "id": 1,
+          "title": "Установка счетчика",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Оформление акта",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 1800,
+      "contact_name": "Сидорова А.В.",
+      "contact_phone": "+7 (900) 444-55-66",
+      "client_comments": "Поверка счетчика без снятия",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "paid",
+      "payment_note": "rfhnjq",
+      "service_note": "",
+      "created_at": "2026-05-30T00:47:20.059Z",
+      "updated_at": "2026-05-30T00:48:40.494Z",
+      "client_user_id": null,
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "completed",
+          "at": "2026-05-30T00:47:20.059Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "request_id": 3,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "попная",
+      "works": [
+        {
+          "id": 1,
+          "title": "Установка счетчика",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Оформление акта",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 1800,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "помыть кота",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-30T01:08:23.774Z",
+      "updated_at": "2026-05-31T00:27:23.187Z",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-30T01:08:23.774Z",
+          "note": "initial"
+        },
+        {
+          "status": "completed",
+          "at": "2026-05-31T00:27:23.187Z",
+          "by_user_id": 2,
+          "note": null
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "request_id": 3,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "попная",
+      "works": [
+        {
+          "id": 1,
+          "title": "помыть",
+          "completed": false
+        }
+      ],
+      "estimated_cost": 1800,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "помыть кота",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "cancelled",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-30T01:10:05.082Z",
+      "updated_at": "2026-05-30T21:57:00.760Z",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "cancelled",
+          "at": "2026-05-30T01:10:05.082Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "request_id": 4,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "падал",
+      "works": [
+        {
+          "id": 1,
+          "title": "проба",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 1800,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "Пуся",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-30T01:25:41.646Z",
+      "updated_at": "2026-05-30T01:26:38.878Z",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "completed",
+          "at": "2026-05-30T01:25:41.646Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "request_id": 5,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "пппп",
+      "works": [
+        {
+          "id": 1,
+          "title": "ротор",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "чсмпр",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 1800,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "казашка",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-30T21:29:17.637Z",
+      "updated_at": "2026-05-30T21:30:19.740Z",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "completed",
+          "at": "2026-05-30T21:29:17.637Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "request_id": 1,
+      "client_user_id": null,
+      "assigned_user_id": 2,
+      "address": "ул. Ленина, 12, кв. 45",
+      "works": [
+        {
+          "id": 1,
+          "title": "Установка счетчика",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "title": "Оформление акта",
+          "completed": false
+        }
+      ],
+      "estimated_cost": 1800,
+      "contact_name": "Петров И.С.",
+      "contact_phone": "+7 (900) 111-22-33",
+      "client_comments": "Установка счетчиков ХВС и ГВС",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "published",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "created_at": "2026-05-30T22:10:37.163Z",
+      "updated_at": "2026-05-30T22:10:37.163Z",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": "",
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-30T22:10:37.163Z",
+          "note": "initial"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "request_id": 9,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "пожалуйста",
+      "works": [
+        {
+          "id": 1,
+          "title": "Счетчик воды ITELMA",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Счетчик воды VALTEC",
+          "completed": true
+        },
+        {
+          "id": 3,
+          "title": "Счетчик горячей воды ЭКО",
+          "completed": true
+        },
+        {
+          "id": 4,
+          "title": "Оформление документов",
+          "completed": true
+        },
+        {
+          "id": 5,
+          "title": "Установка 2 счетчиков",
+          "completed": true
+        },
+        {
+          "id": 6,
+          "title": "Замена узла учета",
+          "completed": true
+        },
+        {
+          "id": 7,
+          "title": "Поверка без снятия",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 15350,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "помогите",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": null,
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-31T00:18:45.413Z",
+          "by_user_id": 1,
+          "note": "order created"
+        },
+        {
+          "status": "in_progress",
+          "at": "2026-05-31T00:22:03.898Z",
+          "by_user_id": 2,
+          "note": null
+        },
+        {
+          "status": "completed",
+          "at": "2026-05-31T00:23:42.727Z",
+          "by_user_id": 2,
+          "note": null
+        }
+      ],
+      "created_at": "2026-05-31T00:18:45.413Z",
+      "updated_at": "2026-05-31T00:23:42.727Z"
+    },
+    {
+      "id": 13,
+      "request_id": 10,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "ааа",
+      "works": [
+        {
+          "id": 1,
+          "title": "Счетчик воды ITELMA",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Счетчик воды VALTEC",
+          "completed": true
+        },
+        {
+          "id": 3,
+          "title": "Счетчик горячей воды ЭКО",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 6850,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "ббб",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "paid",
+      "payment_note": "",
+      "service_note": "",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": null,
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-31T00:28:07.972Z",
+          "by_user_id": 1,
+          "note": "order created"
+        },
+        {
+          "status": "completed",
+          "at": "2026-05-31T00:28:48.702Z",
+          "by_user_id": 2,
+          "note": null
+        }
+      ],
+      "created_at": "2026-05-31T00:28:07.972Z",
+      "updated_at": "2026-05-31T00:28:48.702Z"
+    },
+    {
+      "id": 14,
+      "request_id": 11,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "dssasdc",
+      "works": [
+        {
+          "id": 1,
+          "title": "Счетчик воды ITELMA",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Счетчик воды VALTEC",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 4550,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "Asda",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "paid",
+      "payment_note": "",
+      "service_note": "",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": null,
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-31T00:32:26.234Z",
+          "by_user_id": 1,
+          "note": "order created"
+        },
+        {
+          "status": "completed",
+          "at": "2026-05-31T00:33:00.396Z",
+          "by_user_id": 2,
+          "note": null
+        }
+      ],
+      "created_at": "2026-05-31T00:32:26.234Z",
+      "updated_at": "2026-05-31T00:33:00.396Z"
+    },
+    {
+      "id": 15,
+      "request_id": null,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "ул. Новая 5",
+      "works": [
+        {
+          "id": 1,
+          "title": "Установка 2 счетчиков",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 3200,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "paid",
+      "payment_note": "",
+      "service_note": "",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": null,
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-31T00:48:09.008Z",
+          "by_user_id": 1,
+          "note": "order created"
+        },
+        {
+          "status": "in_progress",
+          "at": "2026-05-31T00:51:54.949Z",
+          "by_user_id": 2,
+          "note": null
+        },
+        {
+          "status": "completed",
+          "at": "2026-05-31T00:51:59.335Z",
+          "by_user_id": 2,
+          "note": null
+        }
+      ],
+      "created_at": "2026-05-31T00:48:09.008Z",
+      "updated_at": "2026-05-31T00:51:59.335Z"
+    },
+    {
+      "id": 16,
+      "request_id": 12,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "ул. Новая 5",
+      "works": [
+        {
+          "id": 1,
+          "title": "Поверка со снятием",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 1600,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "ппп",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "pending",
+      "payment_note": "",
+      "service_note": "",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": null,
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-31T10:23:14.462Z",
+          "by_user_id": 1,
+          "note": "order created"
+        },
+        {
+          "status": "in_progress",
+          "at": "2026-05-31T10:23:56.307Z",
+          "by_user_id": 2,
+          "note": null
+        },
+        {
+          "status": "completed",
+          "at": "2026-05-31T10:26:30.294Z",
+          "by_user_id": 2,
+          "note": null
+        }
+      ],
+      "created_at": "2026-05-31T10:23:14.462Z",
+      "updated_at": "2026-05-31T10:26:30.294Z"
+    },
+    {
+      "id": 17,
+      "request_id": 13,
+      "client_user_id": 6,
+      "assigned_user_id": 2,
+      "address": "jhjh",
+      "works": [
+        {
+          "id": 1,
+          "title": "Установка 2 счетчиков",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Замена узла учета",
+          "completed": true
+        }
+      ],
+      "estimated_cost": 6700,
+      "contact_name": "Анна Клиентова",
+      "contact_phone": "+7 (900) 222-33-44",
+      "client_comments": "kjkj",
+      "visit_date": "2026-05-07",
+      "visit_time": "12:00",
+      "status": "completed",
+      "payment_status": "paid",
+      "payment_note": "",
+      "service_note": "",
+      "extra_works": [],
+      "failure_reason": null,
+      "failure_note": null,
+      "status_history": [
+        {
+          "status": "published",
+          "at": "2026-05-31T10:51:08.491Z",
+          "by_user_id": 1,
+          "note": "order created"
+        },
+        {
+          "status": "in_progress",
+          "at": "2026-05-31T10:52:31.872Z",
+          "by_user_id": 2,
+          "note": null
+        },
+        {
+          "status": "completed",
+          "at": "2026-05-31T10:53:58.030Z",
+          "by_user_id": 2,
+          "note": null
+        }
+      ],
+      "created_at": "2026-05-31T10:51:08.491Z",
+      "updated_at": "2026-05-31T10:53:58.030Z"
+    }
+  ],
+  "chatMessages": [
+    {
+      "id": 1,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "привет спишь?",
+      "created_at": "2026-05-30T22:01:18.757Z",
+      "read_by_admin": true
+    },
+    {
+      "id": 2,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "привет нет а ты?",
+      "created_at": "2026-05-30T22:01:57.953Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 3,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 10,
+      "sender_id": 2,
+      "sender_role": "employee",
+      "sender_name": "Игорь Монтажник",
+      "text": "привет",
+      "created_at": "2026-05-30T22:03:57.517Z",
+      "read_by_admin": true
+    },
+    {
+      "id": 4,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 10,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "ку",
+      "created_at": "2026-05-30T22:04:59.441Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 5,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 12,
+      "sender_id": 2,
+      "sender_role": "employee",
+      "sender_name": "Игорь Монтажник",
+      "text": "какой дом?",
+      "created_at": "2026-05-31T00:21:14.739Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 6,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 12,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "13",
+      "created_at": "2026-05-31T00:21:34.145Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 7,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 7,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "Работы по заказу #7 завершены. Пожалуйста, оцените работу Игорь Монтажник.",
+      "action": {
+        "type": "review",
+        "order_id": 7,
+        "label": "Оставить отзыв по заказу #7"
+      },
+      "created_at": "2026-05-31T00:27:23.187Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 8,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 13,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "Работы по заказу #13 завершены. Пожалуйста, оцените работу Игорь Монтажник.",
+      "action": {
+        "type": "review",
+        "order_id": 13,
+        "label": "Оставить отзыв по заказу #13"
+      },
+      "created_at": "2026-05-31T00:28:48.702Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 9,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 12,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "Работы по заказу #12 завершены. Пожалуйста, оцените работу Игорь Монтажник.",
+      "action": {
+        "type": "review",
+        "order_id": 12,
+        "label": "Оставить отзыв по заказу #12"
+      },
+      "created_at": "2026-05-31T00:30:52.079Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 10,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 14,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "Работы по заказу #14 завершены. Пожалуйста, оцените работу Игорь Монтажник.",
+      "action": {
+        "type": "review",
+        "order_id": 14,
+        "label": "Оставить отзыв по заказу #14"
+      },
+      "created_at": "2026-05-31T00:33:00.396Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 11,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 15,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "Работы по заказу #15 завершены. Пожалуйста, оцените работу Игорь Монтажник.",
+      "action": {
+        "type": "review",
+        "order_id": 15,
+        "label": "Оставить отзыв по заказу #15"
+      },
+      "created_at": "2026-05-31T00:51:59.337Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 12,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 16,
+      "sender_id": 2,
+      "sender_role": "employee",
+      "sender_name": "Игорь Монтажник",
+      "text": "привет",
+      "action": null,
+      "created_at": "2026-05-31T10:26:01.025Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 13,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 16,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "хай",
+      "action": null,
+      "created_at": "2026-05-31T10:26:14.418Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 14,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 16,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "Работы по заказу #16 завершены. Пожалуйста, оцените работу Игорь Монтажник.",
+      "action": {
+        "type": "review",
+        "order_id": 16,
+        "label": "Оставить отзыв по заказу #16"
+      },
+      "created_at": "2026-05-31T10:26:30.295Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 15,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "привет",
+      "action": null,
+      "created_at": "2026-05-31T10:50:03.686Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 16,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 2,
+      "sender_role": "employee",
+      "sender_name": "Игорь Монтажник",
+      "text": "какой дом",
+      "action": null,
+      "created_at": "2026-05-31T10:52:13.990Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 17,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 1,
+      "sender_role": "admin",
+      "sender_name": "Андрей Админ",
+      "text": "Работы по заказу #17 завершены. Пожалуйста, оцените работу Игорь Монтажник.",
+      "action": {
+        "type": "review",
+        "order_id": 17,
+        "label": "Оставить отзыв по заказу #17"
+      },
+      "created_at": "2026-05-31T10:53:58.030Z",
+      "read_by_admin": true,
+      "read_by_user": true
+    },
+    {
+      "id": 18,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "а есть ли у вас тото",
+      "action": null,
+      "created_at": "2026-05-31T11:02:59.762Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 19,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "или нет",
+      "action": null,
+      "created_at": "2026-05-31T11:03:02.665Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 20,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "иол",
+      "action": null,
+      "created_at": "2026-05-31T11:03:04.993Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 21,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "ыва",
+      "action": null,
+      "created_at": "2026-05-31T11:03:05.768Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 22,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "ыв",
+      "action": null,
+      "created_at": "2026-05-31T11:03:06.034Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 23,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "пы",
+      "action": null,
+      "created_at": "2026-05-31T11:03:06.246Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 24,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "апыап",
+      "action": null,
+      "created_at": "2026-05-31T11:03:06.624Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 25,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "ыап",
+      "action": null,
+      "created_at": "2026-05-31T11:03:06.947Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 26,
+      "channel": "general",
+      "thread_user_id": 6,
+      "order_id": null,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "ыа",
+      "action": null,
+      "created_at": "2026-05-31T11:03:08.057Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 27,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "тут кто-то есть",
+      "action": null,
+      "created_at": "2026-05-31T11:13:39.763Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 28,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "помогите",
+      "action": null,
+      "created_at": "2026-05-31T11:13:42.110Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 29,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "что",
+      "action": null,
+      "created_at": "2026-05-31T11:13:43.398Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 30,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "что не так",
+      "action": null,
+      "created_at": "2026-05-31T11:13:46.494Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 31,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "ты где",
+      "action": null,
+      "created_at": "2026-05-31T11:13:49.166Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 32,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "я тут",
+      "action": null,
+      "created_at": "2026-05-31T11:13:50.965Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 33,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "точно все?",
+      "action": null,
+      "created_at": "2026-05-31T11:16:03.650Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 34,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "рп",
+      "action": null,
+      "created_at": "2026-05-31T11:18:13.789Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    },
+    {
+      "id": 35,
+      "channel": "order",
+      "thread_user_id": null,
+      "order_id": 17,
+      "sender_id": 6,
+      "sender_role": "client",
+      "sender_name": "Анна Клиентова",
+      "text": "прпп",
+      "action": null,
+      "created_at": "2026-05-31T11:18:26.893Z",
+      "read_by_admin": false,
+      "read_by_user": true
+    }
+  ],
+  "auditLog": [
+    {
+      "id": 1,
+      "user_id": null,
+      "user_name": "system",
+      "role": "system",
+      "action": "request.created.website",
+      "entity_type": "request",
+      "entity_id": 7,
+      "details": {
+        "source": "website"
+      },
+      "created_at": "2026-05-30T23:43:24.437Z"
+    },
+    {
+      "id": 2,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "profile.updated",
+      "entity_type": "user",
+      "entity_id": 6,
+      "details": {
+        "address": "ул. Новая 5"
+      },
+      "created_at": "2026-05-30T23:43:32.163Z"
+    },
+    {
+      "id": 3,
+      "user_id": null,
+      "user_name": "system",
+      "role": "system",
+      "action": "request.created.website",
+      "entity_type": "request",
+      "entity_id": 8,
+      "details": {
+        "source": "website"
+      },
+      "created_at": "2026-05-30T23:47:04.648Z"
+    },
+    {
+      "id": 4,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.created",
+      "entity_type": "request",
+      "entity_id": 9,
+      "details": null,
+      "created_at": "2026-05-30T23:49:13.990Z"
+    },
+    {
+      "id": 5,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.updated",
+      "entity_type": "request",
+      "entity_id": 9,
+      "details": null,
+      "created_at": "2026-05-31T00:10:05.914Z"
+    },
+    {
+      "id": 6,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "request.updated",
+      "entity_type": "request",
+      "entity_id": 9,
+      "details": {
+        "by": "admin"
+      },
+      "created_at": "2026-05-31T00:17:07.156Z"
+    },
+    {
+      "id": 7,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "request.proposal.sent",
+      "entity_type": "request",
+      "entity_id": 9,
+      "details": {
+        "proposal_cost": 15350
+      },
+      "created_at": "2026-05-31T00:17:27.231Z"
+    },
+    {
+      "id": 8,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.proposal.accepted",
+      "entity_type": "request",
+      "entity_id": 9,
+      "details": null,
+      "created_at": "2026-05-31T00:17:57.920Z"
+    },
+    {
+      "id": 9,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "order.created",
+      "entity_type": "order",
+      "entity_id": 12,
+      "details": {
+        "publish": true
+      },
+      "created_at": "2026-05-31T00:18:45.413Z"
+    },
+    {
+      "id": 10,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 12,
+      "details": {
+        "status": "in_progress",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T00:22:03.898Z"
+    },
+    {
+      "id": 11,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 12,
+      "details": {
+        "status": "in_progress",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T00:22:53.367Z"
+    },
+    {
+      "id": 12,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 12,
+      "details": {
+        "status": "completed",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T00:23:42.727Z"
+    },
+    {
+      "id": 13,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 7,
+      "details": {
+        "status": "completed",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T00:27:23.187Z"
+    },
+    {
+      "id": 14,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.created",
+      "entity_type": "request",
+      "entity_id": 10,
+      "details": null,
+      "created_at": "2026-05-31T00:27:51.232Z"
+    },
+    {
+      "id": 15,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "order.created",
+      "entity_type": "order",
+      "entity_id": 13,
+      "details": {
+        "publish": true
+      },
+      "created_at": "2026-05-31T00:28:07.972Z"
+    },
+    {
+      "id": 16,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 13,
+      "details": {
+        "status": "completed",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T00:28:48.702Z"
+    },
+    {
+      "id": 17,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.created",
+      "entity_type": "request",
+      "entity_id": 11,
+      "details": null,
+      "created_at": "2026-05-31T00:32:05.324Z"
+    },
+    {
+      "id": 18,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "order.created",
+      "entity_type": "order",
+      "entity_id": 14,
+      "details": {
+        "publish": true
+      },
+      "created_at": "2026-05-31T00:32:26.234Z"
+    },
+    {
+      "id": 19,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 14,
+      "details": {
+        "status": "completed",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T00:33:00.397Z"
+    },
+    {
+      "id": 20,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "order.created",
+      "entity_type": "order",
+      "entity_id": 15,
+      "details": {
+        "publish": true
+      },
+      "created_at": "2026-05-31T00:48:09.008Z"
+    },
+    {
+      "id": 21,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 15,
+      "details": {
+        "status": "in_progress",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T00:51:54.949Z"
+    },
+    {
+      "id": 22,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 15,
+      "details": {
+        "status": "completed",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T00:51:59.337Z"
+    },
+    {
+      "id": 23,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.created",
+      "entity_type": "request",
+      "entity_id": 12,
+      "details": null,
+      "created_at": "2026-05-31T01:22:05.262Z"
+    },
+    {
+      "id": 24,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.updated",
+      "entity_type": "request",
+      "entity_id": 12,
+      "details": null,
+      "created_at": "2026-05-31T01:35:17.134Z"
+    },
+    {
+      "id": 25,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "order.created",
+      "entity_type": "order",
+      "entity_id": 16,
+      "details": {
+        "publish": true
+      },
+      "created_at": "2026-05-31T10:23:14.462Z"
+    },
+    {
+      "id": 26,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 16,
+      "details": {
+        "status": "in_progress",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T10:23:56.307Z"
+    },
+    {
+      "id": 27,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 16,
+      "details": {
+        "status": "completed",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T10:26:30.295Z"
+    },
+    {
+      "id": 28,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.created",
+      "entity_type": "request",
+      "entity_id": 13,
+      "details": null,
+      "created_at": "2026-05-31T10:47:11.951Z"
+    },
+    {
+      "id": 29,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "request.updated",
+      "entity_type": "request",
+      "entity_id": 13,
+      "details": {
+        "by": "admin"
+      },
+      "created_at": "2026-05-31T10:48:47.249Z"
+    },
+    {
+      "id": 30,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "request.proposal.sent",
+      "entity_type": "request",
+      "entity_id": 13,
+      "details": {
+        "proposal_cost": 6700
+      },
+      "created_at": "2026-05-31T10:49:08.849Z"
+    },
+    {
+      "id": 31,
+      "user_id": 6,
+      "user_name": "Анна Клиентова",
+      "role": "client",
+      "action": "request.proposal.accepted",
+      "entity_type": "request",
+      "entity_id": 13,
+      "details": null,
+      "created_at": "2026-05-31T10:49:38.122Z"
+    },
+    {
+      "id": 32,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "order.created",
+      "entity_type": "order",
+      "entity_id": 17,
+      "details": {
+        "publish": true
+      },
+      "created_at": "2026-05-31T10:51:08.491Z"
+    },
+    {
+      "id": 33,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 17,
+      "details": {
+        "status": "in_progress",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T10:52:31.872Z"
+    },
+    {
+      "id": 34,
+      "user_id": 2,
+      "user_name": "Игорь Монтажник",
+      "role": "employee",
+      "action": "order.report.updated",
+      "entity_type": "order",
+      "entity_id": 17,
+      "details": {
+        "status": "completed",
+        "failure_reason": null
+      },
+      "created_at": "2026-05-31T10:53:58.030Z"
+    },
+    {
+      "id": 35,
+      "user_id": 1,
+      "user_name": "Андрей Админ",
+      "role": "admin",
+      "action": "review.replied",
+      "entity_type": "review",
+      "entity_id": 6,
+      "details": null,
+      "created_at": "2026-05-31T10:57:14.983Z"
+    }
+  ],
+  "pdAccessLog": [
+    {
+      "id": 1,
+      "admin_user_id": 1,
+      "admin_name": "Андрей Админ",
+      "target_user_id": 2,
+      "action": "view_user_profile",
+      "created_at": "2026-05-31T00:08:32.224Z"
+    },
+    {
+      "id": 2,
+      "admin_user_id": 1,
+      "admin_name": "Андрей Админ",
+      "target_user_id": 2,
+      "action": "view_user_profile",
+      "created_at": "2026-05-31T10:30:00.139Z"
+    },
+    {
+      "id": 3,
+      "admin_user_id": 1,
+      "admin_name": "Андрей Админ",
+      "target_user_id": 2,
+      "action": "view_user_profile",
+      "created_at": "2026-05-31T10:30:08.778Z"
+    },
+    {
+      "id": 4,
+      "admin_user_id": 1,
+      "admin_name": "Андрей Админ",
+      "target_user_id": 2,
+      "action": "view_user_profile",
+      "created_at": "2026-05-31T10:57:50.889Z"
+    },
+    {
+      "id": 5,
+      "admin_user_id": 1,
+      "admin_name": "Андрей Админ",
+      "target_user_id": 2,
+      "action": "view_user_profile",
+      "created_at": "2026-05-31T10:58:00.707Z"
+    },
+    {
+      "id": 6,
+      "admin_user_id": 1,
+      "admin_name": "Андрей Админ",
+      "target_user_id": 2,
+      "action": "view_user_profile",
+      "created_at": "2026-05-31T10:58:02.955Z"
+    }
+  ],
+  "complaints": []
+}

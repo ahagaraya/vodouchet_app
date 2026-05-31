@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "VodoUchet Mobile",
+    "slug": "vodouchet-mobile",
+    "version": "1.0.0",
+    "orientation": "default",
+    "android": {
+      "package": "ru.vodouchet.mobile",
+      "usesCleartextTraffic": true
+    },
+    "ios": {
+      "bundleIdentifier": "ru.vodouchet.mobile"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7f0a239c-6409-4553-890f-c4d8ba62652e"
+      }
+    },
+    "owner": "nozarrashi"
+  }
+}
