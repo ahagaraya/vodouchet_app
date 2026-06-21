@@ -158,7 +158,7 @@ QR в терминале для localhost всё равно печатается
 
 ### С ngrok (телефон / другой человек / другая сеть)
 
-Нужен **ваш** аккаунт ngrok. **Не используйте** чужой URL вида `https://....ngrok-free.dev` — он перестанет работать, когда автор выключит свой ПК.
+Нужен **ваш** аккаунт ngrok. **Не используйте** чужой URL — он перестанет работать, когда автор выключит свой ПК.
 
 #### Шаг 1. Регистрация и установка
 
@@ -167,48 +167,30 @@ QR в терминале для localhost всё равно печатается
 
 #### Шаг 2. Ваш authtoken (один раз на ПК)
 
-В личном кабинете ngrok скопируйте authtoken:
+Скопируйте токен в личном кабинете: https://dashboard.ngrok.com/get-started/your-authtoken
 
 ```bash
 ngrok config add-authtoken ВАШ_ТОКЕН_ИЗ_КАБИНЕТА
 ```
 
-Токен хранится в `~/.config/ngrok/` (или `~/.ngrok2/`), **не** в репозитории.
+Токен хранится на вашем ПК (`~/.config/ngrok/`), **не** в репозитории.
 
-#### Шаг 3. (Рекомендуется) Статический домен
+#### Шаг 3. Автозапуск туннеля (опционально)
 
-1. https://dashboard.ngrok.com/domains  
-2. Зарезервируйте домен, например: `ваш-логин.ngrok-free.app`
-
-#### Шаг 4. Настройка `server/.env`
+В `server/.env`:
 
 ```env
-SITE_BRAND=vodouchet.com
-PUBLIC_URL=https://ваш-логин.ngrok-free.app
-NGROK_DOMAIN=ваш-логин.ngrok-free.app
 AUTO_NGROK=1
 ```
 
-| Переменная | Назначение |
-|------------|------------|
-| `SITE_BRAND` | Название в терминале (баннер) |
-| `PUBLIC_URL` | Желаемый адрес сайта |
-| `NGROK_DOMAIN` | Зарезервированный домен в **вашем** кабинете ngrok |
-| `AUTO_NGROK=1` | Автозапуск туннеля при `npm start` |
+При `npm start` ngrok поднимется сам и в терминале появится **ваша** ссылка и QR-код (адрес вида `https://....ngrok-free.dev` — это нормально, он выдаётся ngrok автоматически).
 
-Для настоящего домена `vodouchet.com` — купите домен и привяжите его в ngrok (платный тариф), затем укажите его в `PUBLIC_URL` и `NGROK_DOMAIN`.
-
-#### Шаг 5. Запуск
+#### Шаг 4. Запуск
 
 ```bash
 cd mobile && npm run build:web
 cd ../server && npm start
 ```
-
-В терминале:
-
-- баннер **vodouchet.com**
-- QR с **вашей** публичной ссылкой
 
 Альтернатива — скрипт:
 
@@ -216,10 +198,10 @@ cd ../server && npm start
 ./scripts/public-url.sh
 ```
 
-#### Только QR для произвольной ссылки
+#### QR для уже известной ссылки
 
 ```bash
-cd server && npm run qr -- https://ваш-логин.ngrok-free.app/
+cd server && npm run qr -- https://ваша-ссылка.ngrok-free.dev/
 ```
 
 ---
@@ -239,7 +221,7 @@ cd server && npm run qr -- https://ваш-логин.ngrok-free.app/
 - [ ] `cp server/.env.example server/.env` (не копировать чужой!)
 - [ ] `cd server && npm install && npm start` — БД создастся сама
 - [ ] (Опционально) Свой SMTP → `npm run setup:email`
-- [ ] (Опционально) Свой ngrok → `ngrok config add-authtoken …` + `NGROK_DOMAIN` в `.env`
+- [ ] (Опционально) Свой ngrok → `ngrok config add-authtoken …`, в `.env`: `AUTO_NGROK=1`
 - [ ] (Опционально) `cd mobile && npm run build:web` — web на порту 4000
 
 ---
@@ -252,7 +234,6 @@ cd server && npm run qr -- https://ваш-логин.ngrok-free.app/
 | `Invalid login` Gmail | Обычный пароль вместо пароля приложения | https://myaccount.google.com/apppasswords |
 | QR ведёт на чужой ngrok | Скопирован чужой `.env` | Удалить `.env`, создать свой, свой authtoken |
 | ngrok не поднимается | Нет authtoken | `ngrok config add-authtoken ВАШ_ТОКЕН` |
-| Кастомный домен ngrok не работает | Домен не зарезервирован в **вашем** кабинете | dashboard.ngrok.com/domains |
 | Пустая БД / нет пользователей | Повреждён `data.sqlite` | `rm server/data.sqlite && npm start` |
 | `ExperimentalWarning: SQLite` | Node 24+ | Можно игнорировать |
 
