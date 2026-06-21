@@ -21,9 +21,9 @@
 
 | Параметр | Значение |
 |----------|----------|
-| Backend | Node.js + Express + lowdb |
-| Порт | 4000 |
-| БД | `server/data.json` (файловая) |
+| Backend | Node.js + Express + SQLite (`node:sqlite`) |
+| Порт | 4000 (API + web при наличии `mobile/dist`) |
+| БД | `server/data.sqlite` (импорт из `data.json` при первом запуске) |
 | Статика | `/static/catalog/item1.png` … |
 
 Перед тестом запустите сервер:
@@ -97,7 +97,7 @@ cd server && npm start
 | Среднее время `/api/catalog` | < 500 ms при 50 VU |
 | Среднее время `/api/health` | < 100 ms |
 
-> lowdb — файловая БД; при высокой конкуренции записи могут замедляться. Для production рекомендуется PostgreSQL.
+> SQLite — файловая СУБД; при высокой конкуренции **записей** возможны задержки. Для production рекомендуется PostgreSQL. Сценарий ниже — преимущественно **чтение** (GET).
 
 ---
 

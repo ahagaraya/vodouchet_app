@@ -11,6 +11,7 @@
 | Документ | Для чего |
 |----------|----------|
 | **[README.md](README.md)** (этот файл) | Обзор проекта, быстрый запуск, демо-логины |
+| **[docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md)** | **SQLite, своя почта (SMTP), ngrok** — для нового пользователя |
 | **[instruction.md](instruction.md)** | Подробная инструкция запуска (Windows, телефон, web, Expo Go) |
 | **[structure.md](structure.md)** | Справочник по структуре: файлы, API, экраны, где что править |
 | **[intoapp.md](intoapp.md)** | Сборка APK через EAS, установка на Android, QR-код |
@@ -19,6 +20,7 @@
 | **[ROADMAP.md](ROADMAP.md)** | Реализованные доработки и идеи для production |
 | **[docs/release-and-qr.md](docs/release-and-qr.md)** | Краткий чек-лист: EAS Build, APK, QR |
 | **[docs/jmeter-plan.md](docs/jmeter-plan.md)** | План нагрузочного тестирования API (JMeter) |
+| **`scripts/public-url.sh`** | Сборка web + сервер + ngrok для публичной ссылки |
 
 ---
 
@@ -26,16 +28,21 @@
 
 ```
 Andrey_help/
-├── server/          # Backend API (Express, lowdb, JWT, bcrypt)
+├── server/          # Backend API (Express, SQLite, JWT, bcrypt, SMTP)
 │   ├── src/
-│   │   ├── index.js       # Основные роуты
-│   │   ├── db.js          # БД, сиды, enrich-функции
+│   │   ├── index.js       # Роуты + раздача web-сборки (mobile/dist)
+│   │   ├── sqliteStore.js # SQLite (node:sqlite), read/write коллекций
+│   │   ├── db.js          # Сиды, enrich-функции
+│   │   ├── mail.js        # Отправка email (SMTP / Resend)
 │   │   ├── chatRoutes.js  # Онлайн-чат
 │   │   ├── roadmapRoutes.js # Расширенные API (дашборд, жалобы, …)
 │   │   └── audit.js       # Журнал аудита и ПДн
-│   ├── data.json          # Файловая БД (создаётся/обновляется при работе)
+│   ├── data.sqlite        # Рабочая БД (создаётся при первом запуске, в .gitignore)
+│   ├── data.json          # Демо-данные / резерв для первого импорта
+│   ├── scripts/           # setup-email.js, test-email.js
 │   └── public/catalog/    # Изображения каталога (item1.png … item9.png)
 ├── mobile/          # React Native + Expo
+│   ├── dist/              # Сборка web (npm run build:web) — отдаётся с порта 4000
 │   ├── src/
 │   │   ├── App.js         # Навигация (tabs + stack)
 │   │   ├── screens/       # Экраны и админ-панели
@@ -44,6 +51,8 @@ Andrey_help/
 │   │   ├── services/api.js
 │   │   └── utils/         # Сортировка, статусы, подтверждения
 │   └── eas.json           # Профиль сборки APK (preview)
+├── scripts/
+│   └── public-url.sh      # Сборка web + сервер + ngrok
 └── docs/            # Материалы для защиты
 ```
 
@@ -53,65 +62,68 @@ Andrey_help/
 
 Репозиторий: **https://github.com/ahagaraya/vodouchet_app**
 
-**Секретные ключи вводить не нужно** — для локального запуска на одном ПК достаточно клонировать репозиторий, установить зависимости и запустить backend и клиент. Файлы `.env` опциональны (есть шаблоны `.env.example`).
+**Секретные ключи автора в репозитории нет** — файл `server/.env` в Git не попадает. Для локального теста на своём ПК достаточно клонировать репозиторий и запустить проект.
+
+**Если нужны реальные письма на email или публичная ссылка (ngrok)** — каждый настраивает **свои** ключи: **[docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md)**. Чужой `.env` использовать нельзя.
 
 ```bash
 git clone https://github.com/ahagaraya/vodouchet_app.git
 cd vodouchet_app
 ```
 
-**Терминал 1 — backend:**
+**Установка и запуск (web + API на одном порту):**
 
 ```bash
-cd server
-npm install
-npm start
+cd server && npm install
+cd ../mobile && npm install && npm run build:web
+cd ../server && npm start
 ```
 
-Проверка: http://localhost:4000/api/health
-
-**Терминал 2 — клиент (web):**
-
-```bash
-cd mobile
-npm install
-npm start
-```
-
-В терминале Expo нажмите **`w`** → http://localhost:8081
+Откройте **http://localhost:4000** — приложение и API на одном адресе.  
+Проверка API: http://localhost:4000/api/health
 
 **Вход:** логин `admin`, `anna_k` или `igor_m`, пароль **`Admin1234`**.
 
-Подробная инструкция (Windows, телефон, `.env`): **[instruction.md](instruction.md)**.
+Для разработки с hot reload — отдельный Expo на порту 8081 (см. **[instruction.md](instruction.md)**).
 
 ---
 
 ## Быстрый запуск
 
-### 1. Backend
+### 1. Web + API (рекомендуется для демо)
 
 ```bash
-cd server
-npm install
-cp .env.example .env   # при необходимости задайте JWT_SECRET
-npm start
+cd server && npm install
+cd ../mobile && npm install && npm run build:web
+cd ../server && npm start
 ```
 
-Сервер: **http://localhost:4000**  
-Проверка: **http://localhost:4000/api/health**
+- Приложение: **http://localhost:4000**
+- API: **http://localhost:4000/api/health**
+- БД: **`server/data.sqlite`** (при первом запуске импортируется из `data.json`)
 
-### 2. Mobile (web)
+Публичная ссылка через ngrok (в терминале — QR-коды для localhost, Wi‑Fi и ngrok):
 
 ```bash
-cd mobile
-npm install
-cp .env.example .env   # по умолчанию EXPO_PUBLIC_API_URL=http://localhost:4000/api
-npm start
+./scripts/public-url.sh
 ```
 
-В терминале Expo нажмите **`w`** для web, или откройте **http://localhost:8081**.
+Только QR для любой ссылки:
 
-Для стабильного web-режима без hot reload (как на демо):
+```bash
+cd server && npm run qr -- http://localhost:4000/
+```
+
+### 2. Разработка (Expo с hot reload)
+
+```bash
+cd server && npm start          # терминал 1
+cd mobile && npm start          # терминал 2, нажмите w → http://localhost:8081
+```
+
+В `mobile/.env`: `EXPO_PUBLIC_API_URL=http://localhost:4000/api`
+
+Стабильный web без hot reload:
 
 ```bash
 cd mobile
@@ -200,7 +212,10 @@ CI=1 EXPO_NO_TELEMETRY=1 npx expo start --web --port 8081 --offline
 
 ## Технические детали (кратко)
 
-- **API URL:** `EXPO_PUBLIC_API_URL` в `mobile/.env` (не хардкод в коде).
+- **БД:** SQLite — [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md)
+- **API URL:** `EXPO_PUBLIC_API_URL` в `mobile/.env`; при web на том же хосте — `/api`.
+- **Email:** свой SMTP — см. [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md). Без настройки коды — в консоли сервера.
+- **Ngrok / публичная ссылка:** свой аккаунт — см. тот же документ. Без ngrok — только `localhost`.
 - **Авторизация:** JWT в заголовке `Authorization: Bearer …`.
 - **Сортировка списков:** по `created_at` на сервере; на клиенте — чипы (`ListSortChips`): новые, старые, по активности, по дате выезда.
 - **Подтверждения:** диалоги «Да / Нет» (web — `ConfirmHost`, native — `Alert`).

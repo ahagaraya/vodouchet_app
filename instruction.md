@@ -1,7 +1,8 @@
 # Инструкция по запуску проекта
 
 Подробное руководство для **Windows** (и аналогично для macOS/Linux).  
-Краткий обзор: [README.md](README.md). Справочник по файлам: [structure.md](structure.md).
+Краткий обзор: [README.md](README.md). Справочник по файлам: [structure.md](structure.md).  
+**SQLite, почта, ngrok:** [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md).
 
 Репозиторий на GitHub: **https://github.com/ahagaraya/vodouchet_app**
 
@@ -17,9 +18,12 @@
 
 - не нужны GitHub token, Expo token, JWT secret, SMTP;
 - файлы `server/.env` и `mobile/.env` **можно не создавать** — проект работает с настройками по умолчанию;
-- в репозитории уже есть демо-база `server/data.json` и картинки каталога.
+- в репозитории уже есть демо-данные `server/data.json` (импортируются в SQLite при первом запуске) и картинки каталога.
 
-Файлы `.env` понадобятся только если вы меняете `JWT_SECRET`, подключаете почту (SMTP) или запускаете приложение с **телефона** по Wi‑Fi (тогда в `mobile/.env` указывают IP компьютера).
+Файлы `.env` **не хранятся в Git** — каждый создаёт свой из шаблона `.env.example`.  
+**Не копируйте чужой `server/.env`** (там чужая почта и ngrok). Подробно: **[docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md)**.
+
+Файлы `.env` понадобятся, если нужны **реальные письма на email**, **публичная ссылка через ngrok**, свой `JWT_SECRET` или запуск с **телефона** по Wi‑Fi.
 
 ### Шаг 1. Установить Node.js
 
@@ -50,22 +54,42 @@ cd ../mobile
 npm install
 ```
 
-### Шаг 4. Запустить backend
+### Шаг 4. Запустить backend (и web на одном порту)
 
-Оставьте этот терминал открытым:
+**Вариант A — демо / защита (один терминал):**
+
+```bash
+cd mobile
+npm run build:web
+
+cd ../server
+npm start
+```
+
+Откройте http://localhost:4000 — приложение и API вместе.
+
+**Вариант B — только API (Expo отдельно, шаг 5):**
 
 ```bash
 cd server
 npm start
 ```
 
-Ожидаемый вывод: `Server started on http://localhost:4000`
+Ожидаемый вывод:
 
-Проверка в браузере: http://localhost:4000/api/health → `{"status":"ok"}`
+```text
+Server started on http://localhost:4000
+Database: SQLite (.../server/data.sqlite)
+Web app: http://localhost:4000/
+```
+
+Проверка: http://localhost:4000/api/health → `{"status":"ok"}`
 
 ### Шаг 5. Запустить клиент (web)
 
-Откройте **второй** терминал:
+Если уже выполнили **вариант A** в шаге 4 — этот шаг **не нужен**, приложение на http://localhost:4000.
+
+Для **разработки с hot reload** откройте второй терминал:
 
 ```bash
 cd mobile
@@ -97,7 +121,11 @@ CI=1 EXPO_NO_TELEMETRY=1 npx expo start --web --port 8081 --offline
 |--------|--------|
 | Нужно ли создавать `.env`? | Нет, для web на localhost |
 | Где взять пароль? | `Admin1234` (см. таблицу выше) |
-| Регистрация нового клиента | Код из email смотрите в **консоли терминала server** |
+| Регистрация нового клиента | Код в **консоли server** (без SMTP) или на **вашей** почте — [setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md) |
+| Нужен ли чужой `.env`? | **Нет.** Создайте свой: `cp server/.env.example server/.env` |
+| Публичная ссылка / QR | Свой **ngrok** — [setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md) |
+| Где база данных? | `server/data.sqlite` — [setup-env-db-ngrok.md § 2](docs/setup-env-db-ngrok.md#2-база-данных-sqlite) |
+| Сброс БД | `rm server/data.sqlite && cd server && npm start` |
 | `EADDRINUSE` на порту 4000 | Закройте старый процесс Node или смените `PORT` в `server/.env` |
 | Телефон не видит API | Нужен `mobile/.env` с IP ПК в Wi‑Fi — см. раздел 3 ниже |
 
@@ -110,7 +138,7 @@ CI=1 EXPO_NO_TELEMETRY=1 npx expo start --web --port 8081 --offline
 ### Обязательно
 
 - **Windows 10/11** (или macOS / Linux для разработки)
-- **Node.js 20.x LTS** или **22.x LTS** (не рекомендуется Node 24)
+- **Node.js 20.x, 22.x LTS** или **24.x** (SQLite через встроенный `node:sqlite`; возможно предупреждение `ExperimentalWarning`)
 - **npm** (устанавливается с Node.js)
 
 ### Для теста на телефоне
@@ -144,17 +172,24 @@ npm install
 
 ## 3. Настройка окружения
 
-### Backend (`server/.env`)
+Полная инструкция по **SQLite, почте (SMTP) и ngrok** — в отдельном документе:
+
+**[docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md)**
+
+Кратко:
 
 ```bash
 cd server
-copy .env.example .env    # Windows
-# cp .env.example .env    # macOS/Linux
+cp .env.example .env    # macOS/Linux
+# copy .env.example .env   # Windows
 ```
 
-Минимально достаточно значений по умолчанию. Для production задайте свой `JWT_SECRET`.
+- **Без `.env`** — работает localhost; код регистрации в консоли; БД создаётся сама.
+- **Со своим `.env`** — письма на вашу почту (`npm run setup:email`) и публичный QR через ngrok.
 
-Если SMTP не настроен (`SMTP_USER`, `SMTP_PASS` пустые), коды подтверждения email и сброса пароля **выводятся в консоль сервера**.
+### Backend (`server/.env`)
+
+Минимально достаточно значений по умолчанию. Для production задайте свой `JWT_SECRET`.
 
 ### Mobile (`mobile/.env`)
 
@@ -196,12 +231,17 @@ npm start
 
 ```text
 Server started on http://localhost:4000
+Database: SQLite (.../server/data.sqlite)
+Web app: http://localhost:4000/
 ```
 
 Проверка в браузере:
 
 - http://localhost:4000/api/health → `{"status":"ok"}`
 - http://localhost:4000/api/catalog → JSON с каталогом
+- http://localhost:4000/ → web-приложение (если выполнен `npm run build:web` в `mobile/`)
+
+**Публичная ссылка (ngrok + QR):** см. [docs/setup-env-db-ngrok.md § 4](docs/setup-env-db-ngrok.md#4-публичная-ссылка-и-qr-ngrok) или `./scripts/public-url.sh`
 
 Если `EADDRINUSE` — порт 4000 занят. Остановите предыдущий процесс Node.js.
 
@@ -214,6 +254,8 @@ lsof -ti:4000 | xargs kill -9
 ---
 
 ## 5. Запуск mobile
+
+Если web уже открывается на http://localhost:4000 (сборка `build:web`) — этот раздел нужен только для **разработки**.
 
 ### Вариант A: Expo (разработка)
 
@@ -277,15 +319,13 @@ CI=1 EXPO_NO_TELEMETRY=1 npx expo start --web --port 8081 --offline
 
 ## 8. База данных и статика
 
+Подробно: **[docs/setup-env-db-ngrok.md § 2](docs/setup-env-db-ngrok.md#2-база-данных-sqlite)**
+
 | Что | Где |
 |-----|-----|
-| БД | `server/data.json` |
+| БД (рабочая) | `server/data.sqlite` |
+| Демо-данные / резерв | `server/data.json` |
 | Картинки | `server/public/catalog/item1.png` … `item9.png` |
-| URL картинок | `http://<host>:4000/static/catalog/item1.png` |
-
-Коллекции: `users`, `categories`, `catalogItems`, `incomingRequests`, `orders`, `reviews`, `chatMessages`, `complaints`, `auditLog`, `pdAccessLog`.
-
-При **первом запуске** пустая БД заполняется seed из `server/src/db.js`.
 
 ---
 
@@ -296,7 +336,7 @@ CI=1 EXPO_NO_TELEMETRY=1 npx expo start --web --port 8081 --offline
 | «Не удалось подключиться к серверу» | Backend не запущен | `cd server && npm start` |
 | Работает на ПК, не на телефоне | Неверный IP / другая сеть | Проверить `.env`, Wi‑Fi, firewall |
 | Пустой каталог | Нет связи с API | `GET /api/catalog` с телефона |
-| Email-код не приходит | SMTP не настроен | Смотреть консоль сервера |
+| Email-код не приходит | SMTP не настроен | [setup-env-db-ngrok.md § 3](docs/setup-env-db-ngrok.md#3-подтверждение-по-email-smtp) |
 | Web: ошибка maps | Нормально | Используется `ContactsScreen.web.js` |
 | Изменения не видны в web | Режим `CI=1` | Перезапустить Expo |
 
@@ -311,4 +351,6 @@ CI=1 EXPO_NO_TELEMETRY=1 npx expo start --web --port 8081 --offline
 | [intoapp.md](intoapp.md) | Сборка APK |
 | [docs/release-and-qr.md](docs/release-and-qr.md) | EAS + QR |
 | [docs/jmeter-plan.md](docs/jmeter-plan.md) | Нагрузочные тесты |
+| [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md) | SQLite, SMTP, ngrok |
+| [scripts/public-url.sh](scripts/public-url.sh) | Web + сервер + ngrok |
 | [defense-qa.md](defense-qa.md) | Ответы на защиту |

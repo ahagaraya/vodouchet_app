@@ -4,8 +4,10 @@ const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
 const path = require("path");
+const fs = require("fs");
+const { sendCodeEmail, logEmailStartupStatus } = require("./mail");
+const { printStartupQr } = require("./printStartupQr");
 const { db, initDb, enrichOrder, enrichReview, enrichRequest, employeeRatingStats, reviewsForEmployee, calculateCatalogCost, appendOrderStatusHistory, FAILURE_REASONS } = require("./db");
 const { registerChatRoutes } = require("./chatRoutes");
 const { registerRoadmapRoutes } = require("./roadmapRoutes");
@@ -19,33 +21,6 @@ const JWT_SECRET = process.env.JWT_SECRET || "vodouchet-secret";
 app.use(cors());
 app.use(express.json());
 app.use("/static", express.static(path.join(__dirname, "..", "public")));
-
-async function sendCodeEmail(email, code, subject = "Код подтверждения регистрации") {
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtp.ethereal.email",
-    port: Number(process.env.SMTP_PORT || 587),
-    auth: {
-      user: process.env.SMTP_USER || "test",
-      pass: process.env.SMTP_PASS || "test"
-    }
-  });
-
-  try {
-    await transporter.sendMail({
-      from: process.env.MAIL_FROM || "noreply@vodouchet.ru",
-      to: email,
-      subject,
-      text: `Ваш код: ${code}`
-    });
-  } catch (error) {
-    console.log("Email service fallback:", error.message);
-    console.log(`Code for ${email}: ${code}`);
-  }
-}
-
-async function sendVerificationEmail(email, code) {
-  return sendCodeEmail(email, code, "Код подтверждения регистрации");
-}
 
 function auth(req, res, next) {
   const token = req.headers.authorization?.replace("Bearer ", "");
@@ -116,8 +91,13 @@ app.post("/api/auth/register", async (req, res) => {
   await db.write();
   logAudit({ id, role, fullName: fullName }, "auth.register", "user", id, null);
 
-  await sendVerificationEmail(email, code);
-  return res.json({ message: "Пользователь создан. Подтвердите email кодом." });
+  const emailResult = await sendCodeEmail(email, code, "Код подтверждения регистрации — ООО «Водоучет»");
+  return res.json({
+    message: emailResult.sent
+      ? "Пользователь создан. Код подтверждения отправлен на email."
+      : "Пользователь создан. SMTP не настроен — код подтверждения в консоли сервера.",
+    emailSent: Boolean(emailResult.sent)
+  });
 });
 
 app.post("/api/auth/verify", (req, res) => {
@@ -932,8 +912,30 @@ registerRoadmapRoutes(app, { auth, adminOnly, clientOnly, employeeOnly, sendCode
 
 app.get("/api/health", (_, res) => res.json({ status: "ok" }));
 
+const webRoot = path.join(__dirname, "..", "..", "mobile", "dist");
+if (fs.existsSync(webRoot)) {
+  app.use(express.static(webRoot));
+  app.get("*", (req, res, next) => {
+    if (req.path.startsWith("/api") || req.path.startsWith("/static")) return next();
+    res.sendFile(path.join(webRoot, "index.html"), (err) => (err ? next() : undefined));
+  });
+}
+
 initDb().then(() => {
-  app.listen(PORT, () => {
+  const { DB_PATH } = require("./sqliteStore");
+  app.listen(PORT, "0.0.0.0", async () => {
     console.log(`Server started on http://localhost:${PORT}`);
+    console.log(`Database: SQLite (${DB_PATH})`);
+    if (fs.existsSync(webRoot)) {
+      console.log(`Web app: http://localhost:${PORT}/`);
+    } else {
+      console.log("Web build not found — run: cd mobile && npm run build:web");
+    }
+    try {
+      await printStartupQr(PORT);
+    } catch (err) {
+      console.error("[QR]", err.message);
+    }
+    logEmailStartupStatus();
   });
 });

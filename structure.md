@@ -30,17 +30,25 @@ Andrey_help/
 
 | Файл | Назначение |
 |------|------------|
-| `server/src/index.js` | Точка входа Express, auth/catalog/orders/client/admin роуты |
-| `server/src/db.js` | lowdb, сиды, `enrichOrder`, `enrichRequest`, `enrichReview` |
+| `server/src/index.js` | Express: auth/catalog/orders/client/admin + раздача `mobile/dist` |
+| `server/src/sqliteStore.js` | SQLite (`node:sqlite`): `db.read()` / `db.write()`, импорт из `data.json` |
+| `server/src/db.js` | Сиды, `initDb`, `enrichOrder`, `enrichRequest`, `enrichReview` |
+| `server/src/mail.js` | SMTP / Resend, отправка кодов подтверждения |
 | `server/src/chatRoutes.js` | Общий чат и чат по заказам, inbox админа |
 | `server/src/roadmapRoutes.js` | Дашборд, отчёты, аудит, каталог CRUD, жалобы, профиль, история |
 | `server/src/audit.js` | Журнал действий и логи доступа к ПДн |
 | `server/src/searchUtils.js` | Поиск заказов/клиентов для админа |
-| `server/data.json` | Рабочая БД (JSON) |
+| `server/data.sqlite` | Рабочая БД SQLite (в `.gitignore`) |
+| `server/data.json` | Демо-данные, импорт при первом запуске |
+| `server/scripts/setup-email.js` | Интерактивная настройка SMTP |
+| `server/scripts/test-email.js` | Проверка отправки письма |
 | `server/public/catalog/` | Картинки каталога (`item1.png` … `item9.png`) |
 | `server/.env` | `JWT_SECRET`, SMTP (из `.env.example`) |
+| `scripts/public-url.sh` | `build:web` + сервер + ngrok |
 
-### 2.2. Коллекции в `data.json`
+### 2.2. Коллекции данных (SQLite)
+
+Данные хранятся в таблице `app_collections` (поле `payload` — JSON-массив). Логические коллекции:
 
 | Коллекция | Назначение |
 |-----------|------------|
@@ -199,7 +207,7 @@ Andrey_help/
 ### 4.3. HTTP-клиент
 
 `mobile/src/services/api.js` — все вызовы API.  
-Базовый URL: `process.env.EXPO_PUBLIC_API_URL || "http://localhost:4000/api"`.
+Базовый URL: `EXPO_PUBLIC_API_URL` или, при web на том же хосте, `${window.location.origin}/api`.
 
 ### 4.4. Экраны (`mobile/src/screens/`)
 
@@ -285,10 +293,11 @@ Andrey_help/
 | Задача | Файл |
 |--------|------|
 | Тестовые логины (seed) | `server/src/db.js` |
-| Текущие пользователи | `server/data.json` → `users` |
+| Текущие пользователи | SQLite → коллекция `users` (или `data.json` до импорта) |
 | Правила пароля при регистрации | `server/src/index.js` → `/auth/register` |
-| Каталог (данные) | `server/data.json` → `catalogItems` |
-| Картинки каталога | `server/public/catalog/` + `image_url` в data |
+| Каталог (данные) | админка или коллекция `catalogItems` в SQLite |
+| Слой БД | `server/src/sqliteStore.js` |
+| Картинки каталога | `server/public/catalog/` + `image_url` в данных |
 | Сортировка списков (логика) | `mobile/src/utils/listSort.js` |
 | Сортировка по умолчанию на API | `server/src/index.js` → `compareByRecency` |
 | Подтверждение отмены заявки | `ClientRequestsScreen.js`, `ClientRequestFormScreen.js`, `utils/confirm.js` |
@@ -296,13 +305,25 @@ Andrey_help/
 | Вкладки админа | `AdminScreen.js` |
 | URL backend для APK | `mobile/.env` → `EXPO_PUBLIC_API_URL` |
 | JWT secret | `server/.env` → `JWT_SECRET` |
-| Email-код (SMTP) | `server/.env`, `sendCodeEmail` в `index.js` |
+| Email-код (SMTP) | [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md) |
+| Ngrok / публичный QR | [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md) |
+| База SQLite | [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md) |
+| Web на одном порту с API | `cd mobile && npm run build:web`, затем `cd server && npm start` |
 
 ---
 
 ## 6. Запуск
 
-### Backend
+### Web + API (демо, один порт)
+
+```bash
+cd mobile && npm install && npm run build:web
+cd ../server && npm install && npm start
+```
+
+Открыть http://localhost:4000
+
+### Backend (только API)
 
 ```bash
 cd server && npm install && npm start
@@ -350,4 +371,5 @@ CI=1 EXPO_NO_TELEMETRY=1 npx expo start --web --port 8081 --offline
 | [defense-qa.md](defense-qa.md) | Вопросы защиты |
 | [ROADMAP.md](ROADMAP.md) | Доработки |
 | [docs/release-and-qr.md](docs/release-and-qr.md) | EAS Build |
+| [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md) | SQLite, SMTP, ngrok |
 | [docs/jmeter-plan.md](docs/jmeter-plan.md) | JMeter |

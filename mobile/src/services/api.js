@@ -1,5 +1,13 @@
-// EXPO_PUBLIC_API_URL — см. mobile/.env.example (для APK: IP ПК в Wi‑Fi)
-const API_URL = process.env.EXPO_PUBLIC_API_URL || "http://localhost:4000/api";
+// EXPO_PUBLIC_API_URL — см. mobile/.env.example; на том же хосте — /api
+function resolveApiUrl() {
+  if (process.env.EXPO_PUBLIC_API_URL) return process.env.EXPO_PUBLIC_API_URL;
+  if (typeof window !== "undefined" && window.location?.origin) {
+    return `${window.location.origin}/api`;
+  }
+  return "http://localhost:4000/api";
+}
+
+const API_URL = resolveApiUrl();
 
 async function request(path, { method = "GET", headers = {}, body } = {}) {
   let res;

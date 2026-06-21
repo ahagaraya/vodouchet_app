@@ -2,7 +2,7 @@
 
 **Тема:** «Разработка приложения для выездных специалистов компании ООО "Водоучет"»
 
-Документ соответствует фактической реализации в папке `Andrey_help` (React Native + Expo, Node.js + Express, lowdb).
+Документ соответствует фактической реализации в папке `Andrey_help` (React Native + Expo, Node.js + Express, SQLite).
 
 **Навигация:** [README.md](README.md) · [structure.md](structure.md) · [concept.md](concept.md) · [instruction.md](instruction.md)
 
@@ -52,7 +52,7 @@
 
 - клиент–серверная архитектура;
 - RBAC (роли на API и в UI);
-- разделение слоёв: экраны → `api.js` → Express → lowdb;
+- разделение слоёв: экраны → `api.js` → Express → SQLite (`sqliteStore.js`);
 - seed-данные для демонстрации на защите.
 
 ---
@@ -67,7 +67,7 @@ Seed при первом запуске (`server/src/db.js`):
 - 9 позиций каталога, 3 категории;
 - заявки (`incomingRequests`), заказы (`orders`), отзывы, чаты.
 
-Рабочая БД: `server/data.json`.
+Рабочая БД: `server/data.sqlite` (при первом запуске импорт из `server/data.json`).
 
 ### Результаты
 
@@ -126,14 +126,14 @@ Seed при первом запуске (`server/src/db.js`):
 |------------|-------|
 | **React Native + Expo** | Кроссплатформа Android/iOS, одна кодовая база |
 | **Node.js + Express** | REST API, единый язык с клиентом |
-| **lowdb** | Файловая JSON-БД без отдельного СУБД-сервера |
+| **SQLite** (`node:sqlite`) | Файловая реляционная БД без отдельного сервера СУБД |
 | **JWT** | Сессия после входа |
 | **bcrypt** | Хэш паролей |
 | **EAS Build** | Сборка APK в облаке |
 
 **Почему не Firebase?** Задача — показать **свой** backend, свои API, роли и нагрузочное тестирование.
 
-**Почему не PostgreSQL в прототипе?** Проще перенос и демонстрация (один файл `data.json`). Для production — PostgreSQL ([ROADMAP.md](ROADMAP.md)).
+**Почему не PostgreSQL в прототипе?** Проще перенос и демонстрация (один файл `data.sqlite`). Для production с высокой нагрузкой — PostgreSQL ([ROADMAP.md](ROADMAP.md)).
 
 ---
 
@@ -143,13 +143,15 @@ Seed при первом запуске (`server/src/db.js`):
 [Mobile: React Native / Expo]
         ↓ HTTP/JSON (REST)
 [Backend: Node.js + Express]
-   ├── index.js      — auth, catalog, orders, client, admin
-   ├── chatRoutes.js — чаты
+   ├── index.js        — auth, catalog, orders, client, admin, web (mobile/dist)
+   ├── sqliteStore.js  — SQLite read/write
+   ├── mail.js         — SMTP / email-коды
+   ├── chatRoutes.js   — чаты
    ├── roadmapRoutes.js — дашборд, жалобы, профиль, …
-   └── audit.js      — журнал
+   └── audit.js        — журнал
         ↓
-[lowdb → server/data.json]
-[Статика → server/public/catalog/]
+[SQLite → server/data.sqlite]
+[Статика → server/public/catalog/ + mobile/dist]
 ```
 
 ### Общение с сервером
@@ -160,7 +162,7 @@ Seed при первом запуске (`server/src/db.js`):
 
 | Данные | Где |
 |--------|-----|
-| Пользователи, заявки, заказы, чаты | `server/data.json` |
+| Пользователи, заявки, заказы, чаты | `server/data.sqlite` |
 | Картинки | `server/public/catalog/` |
 | JWT после входа | память приложения (`AuthContext`) |
 
@@ -233,14 +235,18 @@ Backend локальный. APK обращается к IP ПК в Wi‑Fi.
 |--------|-------|
 | Пароли | bcrypt, поле `password_hash` |
 | Запросы | JWT в `Authorization: Bearer …` |
-| SQL-инъекции | SQL нет — JSON + валидация входа |
+| SQL-инъекции | Параметризованные запросы в `sqliteStore.js`; бизнес-данные — JSON с валидацией входа |
 | Роли | admin / employee / client на API и в навигации |
 
 ---
 
 ## 7. База данных
 
-Коллекции в `data.json`:
+**СУБД:** SQLite через встроенный модуль Node.js `node:sqlite`.  
+**Файл:** `server/data.sqlite`.  
+**Схема:** таблица `app_collections(name, payload)` — каждая коллекция хранится как JSON в `payload`.
+
+Логические коллекции:
 
 | Коллекция | Назначение |
 |-----------|------------|
@@ -255,7 +261,9 @@ Backend локальный. APK обращается к IP ПК в Wi‑Fi.
 
 Связи: `orders.client_user_id`, `orders.assigned_user_id` → `users.id`; `reviews.order_id` → `orders.id`; `catalogItems.category_id` → `categories.id`.
 
-Миграций нет — seed при пустой БД, правки через `data.json` или админку.
+Миграций нет — при пустой БД импорт из `data.json` или seed из `db.js`; правки через админку или `db.write()`.
+
+**Сброс к демо-данным:** удалить `data.sqlite` и перезапустить сервер.
 
 ---
 
@@ -287,7 +295,7 @@ Backend локальный. APK обращается к IP ПК в Wi‑Fi.
 
 ## Шпаргалка на 30 секунд
 
-> Мобильное приложение для ООО «Водоучет» на React Native и Expo с backend на Node.js. Роли admin, employee, client: заявки, заказы, выезды, каталог из 9 услуг, чаты, отзывы, админ-дашборд. Пароли — bcrypt, API — JWT. Данные в `data.json`. APK через EAS. Сортировка списков, подтверждение отмены, UI-карточки выездов. Для production — облачный сервер и PostgreSQL.
+> Мобильное приложение для ООО «Водоучет» на React Native и Expo с backend на Node.js. Роли admin, employee, client: заявки, заказы, выезды, каталог из 9 услуг, чаты, отзывы, админ-дашборд. Пароли — bcrypt, API — JWT. Данные в SQLite (`data.sqlite`). Web и API на одном порту 4000. APK через EAS. Для production — облачный сервер и PostgreSQL.
 
 ---
 
@@ -299,7 +307,8 @@ Backend локальный. APK обращается к IP ПК в Wi‑Fi.
 | Клиент | `anna_k` / `Admin1234` |
 | Специалист | `igor_m` / `Admin1234` |
 | Backend | `cd server && npm start` |
-| Web | `cd mobile && CI=1 npx expo start --web --port 8081 --offline` |
+| Web (демо) | `cd mobile && npm run build:web`, затем сервер → http://localhost:4000 |
+| Web (разработка) | `cd mobile && CI=1 npx expo start --web --port 8081 --offline` |
 | Health | http://localhost:4000/api/health |
 
 ---
@@ -315,4 +324,5 @@ Backend локальный. APK обращается к IP ПК в Wi‑Fi.
 | [intoapp.md](intoapp.md) | APK + QR |
 | [ROADMAP.md](ROADMAP.md) | Доработки |
 | [docs/release-and-qr.md](docs/release-and-qr.md) | EAS чек-лист |
+| [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md) | SQLite, SMTP, ngrok для нового пользователя |
 | [docs/jmeter-plan.md](docs/jmeter-plan.md) | JMeter |

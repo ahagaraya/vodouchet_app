@@ -1,22 +1,6 @@
 const path = require("path");
 const bcrypt = require("bcryptjs");
-const { Low } = require("lowdb");
-const { JSONFile } = require("lowdb/node");
-
-const dbPath = path.join(__dirname, "..", "data.json");
-const db = new Low(new JSONFile(dbPath), {
-  users: [],
-  categories: [],
-  catalogItems: [],
-  reviews: [],
-  supportMessages: [],
-  incomingRequests: [],
-  orders: [],
-  chatMessages: [],
-  auditLog: [],
-  pdAccessLog: [],
-  complaints: []
-});
+const { db } = require("./sqliteStore");
 
 const FAILURE_REASONS = ["no_access", "defect", "client_absent", "other"];
 
@@ -168,19 +152,6 @@ function seedData() {
 
 async function initDb() {
   await db.read();
-  db.data ||= {
-    users: [],
-    categories: [],
-    catalogItems: [],
-    reviews: [],
-    supportMessages: [],
-    incomingRequests: [],
-    orders: [],
-    chatMessages: [],
-    auditLog: [],
-    pdAccessLog: [],
-    complaints: []
-  };
   if (db.data.users.length === 0) {
     seedData();
     await db.write();

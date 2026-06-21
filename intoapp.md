@@ -7,7 +7,7 @@
 3. запустить backend на ПК;
 4. подготовить QR для скачивания APK.
 
-См. также: [docs/release-and-qr.md](docs/release-and-qr.md), [instruction.md](instruction.md), [README.md](README.md).
+См. также: [docs/release-and-qr.md](docs/release-and-qr.md), [instruction.md](instruction.md), [docs/setup-env-db-ngrok.md](docs/setup-env-db-ngrok.md), [README.md](README.md).
 
 ---
 
@@ -117,7 +117,12 @@ cd server
 npm start
 ```
 
-Ожидаемый вывод: `Server started on http://localhost:4000`
+Ожидаемый вывод:
+
+```text
+Server started on http://localhost:4000
+Database: SQLite (.../server/data.sqlite)
+```
 
 **Обязательно:**
 

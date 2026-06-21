@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start",
+    "build:web": "EXPO_PUBLIC_API_URL=/api CI=1 npx expo export --platform web",
     "android": "expo run:android",
     "ios": "expo run:ios"
   },

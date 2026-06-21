@@ -1,24 +1,30 @@
 # Публикация APK и QR-код
 
 Краткий чек-лист для защиты диплома.  
-Подробная инструкция: [intoapp.md](../intoapp.md).
+Подробная инструкция: [intoapp.md](../intoapp.md).  
+Ngrok и `.env`: [setup-env-db-ngrok.md](setup-env-db-ngrok.md).
 
 ---
 
 ## Предварительная проверка
 
-1. **Backend:**
+1. **Сборка web (опционально, один порт с API):**
+   ```bash
+   cd mobile && npm run build:web
+   ```
+2. **Backend:**
    ```bash
    cd server && npm start
    ```
-2. **API:**
+3. **Проверка:**
    - http://localhost:4000/api/health
    - http://localhost:4000/api/catalog
-3. **Mobile (локально):**
+   - http://localhost:4000/ — web-приложение (если собран `mobile/dist`)
+4. **Mobile (разработка, отдельный порт):**
    ```bash
    cd mobile && npm start
    ```
-   Нажмите `w` для web.
+   Нажмите `w` для web на http://localhost:8081.
 
 ---
 
